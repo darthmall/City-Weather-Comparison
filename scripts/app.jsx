@@ -2,14 +2,24 @@
 
 var React = require('react');
 
+var LocationList = require('components/LocationList.jsx');
+
 var CityWeatherApp = React.createClass({
   getInitialState : function () {
-    return {};
+    return {
+      locations : [{
+        name : 'London',
+        country : 'United Kingdom'
+      }, {
+        name : 'New York',
+        country : 'United States'
+      }]
+    };
   },
 
   render : function () {
     return (
-      <h1>Hello, World!</h1>
+      <LocationList locations={this.state.locations} />
     );
   }
 });
