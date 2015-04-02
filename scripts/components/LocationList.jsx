@@ -15,6 +15,9 @@ module.exports = React.createClass({
     return (
       <ul class="locations">
         {locations}
+        <li class="new-location">
+          <button type="button">+</button>
+        </li>
       </ul>
     );
   }

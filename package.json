@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "flux": "^2.0.1",
-    "react": "^0.13.1"
+    "lodash": "^3.6.0",
+    "react": "^0.13.1",
+    "superagent": "^1.1.0"
   },
   "devDependencies": {
     "browserify": "^9.0.3",
