@@ -1,0 +1,349 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Denver",
+               "short_name" : "Denver",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Denver County",
+               "short_name" : "Denver County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Colorado",
+               "short_name" : "CO",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Denver, CO, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 39.91424689999999,
+                  "lng" : -104.6002959
+               },
+               "southwest" : {
+                  "lat" : 39.614431,
+                  "lng" : -105.109927
+               }
+            },
+            "location" : {
+               "lat" : 39.7392358,
+               "lng" : -104.990251
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 39.91424689999999,
+                  "lng" : -104.6002959
+               },
+               "southwest" : {
+                  "lat" : 39.614431,
+                  "lng" : -105.109927
+               }
+            }
+         },
+         "place_id" : "ChIJzxcfI6qAa4cR1jaKJ_j0jhE",
+         "types" : [ "locality", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Denver",
+               "short_name" : "Denver",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Jefferson",
+               "short_name" : "Jefferson",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "Miami County",
+               "short_name" : "Miami County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Indiana",
+               "short_name" : "IN",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Denver, IN, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 40.869306,
+                  "lng" : -86.071905
+               },
+               "southwest" : {
+                  "lat" : 40.85985489999999,
+                  "lng" : -86.08378499999999
+               }
+            },
+            "location" : {
+               "lat" : 40.8661533,
+               "lng" : -86.0774938
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 40.869306,
+                  "lng" : -86.071905
+               },
+               "southwest" : {
+                  "lat" : 40.85985489999999,
+                  "lng" : -86.08378499999999
+               }
+            }
+         },
+         "place_id" : "ChIJlZfpUyZtFIgRDgunBumvmgg",
+         "types" : [ "locality", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Denver",
+               "short_name" : "Denver",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Lancaster County",
+               "short_name" : "Lancaster County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Pennsylvania",
+               "short_name" : "PA",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Denver, PA, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 40.246485,
+                  "lng" : -76.125148
+               },
+               "southwest" : {
+                  "lat" : 40.2210059,
+                  "lng" : -76.15861389999999
+               }
+            },
+            "location" : {
+               "lat" : 40.2331483,
+               "lng" : -76.1371683
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 40.246485,
+                  "lng" : -76.125148
+               },
+               "southwest" : {
+                  "lat" : 40.2210059,
+                  "lng" : -76.15861389999999
+               }
+            }
+         },
+         "place_id" : "ChIJ44zoa40SxokRkb-0E-Sa-iQ",
+         "types" : [ "locality", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Denver",
+               "short_name" : "Denver",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Jefferson",
+               "short_name" : "Jefferson",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "Bremer County",
+               "short_name" : "Bremer County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Iowa",
+               "short_name" : "IA",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "50622",
+               "short_name" : "50622",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Denver, IA 50622, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 42.681832,
+                  "lng" : -92.317549
+               },
+               "southwest" : {
+                  "lat" : 42.663483,
+                  "lng" : -92.3503719
+               }
+            },
+            "location" : {
+               "lat" : 42.6713718,
+               "lng" : -92.33740450000001
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 42.681832,
+                  "lng" : -92.317549
+               },
+               "southwest" : {
+                  "lat" : 42.663483,
+                  "lng" : -92.3503719
+               }
+            }
+         },
+         "place_id" : "ChIJDyi3UZqv-ocRuyqH8WCz1lU",
+         "types" : [ "locality", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Denver",
+               "short_name" : "Denver",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Middletown",
+               "short_name" : "Middletown",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "Delaware County",
+               "short_name" : "Delaware County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "New York",
+               "short_name" : "NY",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "12421",
+               "short_name" : "12421",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Denver, NY 12421, USA",
+         "geometry" : {
+            "location" : {
+               "lat" : 42.2125871,
+               "lng" : -74.5693201
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 42.2139360802915,
+                  "lng" : -74.56797111970849
+               },
+               "southwest" : {
+                  "lat" : 42.2112381197085,
+                  "lng" : -74.57066908029151
+               }
+            }
+         },
+         "place_id" : "ChIJwW3qW91d3IkRziVRueY_-Q0",
+         "types" : [ "locality", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Denver",
+               "short_name" : "Denver",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Allen",
+               "short_name" : "Allen",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "Worth County",
+               "short_name" : "Worth County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Missouri",
+               "short_name" : "MO",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Denver, MO, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 40.405941,
+                  "lng" : -94.31874999999999
+               },
+               "southwest" : {
+                  "lat" : 40.391698,
+                  "lng" : -94.329049
+               }
+            },
+            "location" : {
+               "lat" : 40.3972162,
+               "lng" : -94.3227345
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 40.405941,
+                  "lng" : -94.31874999999999
+               },
+               "southwest" : {
+                  "lat" : 40.391698,
+                  "lng" : -94.329049
+               }
+            }
+         },
+         "place_id" : "ChIJY9Yr91BX6ocRp9WQPKsmaxs",
+         "types" : [ "locality", "political" ]
+      }
+   ],
+   "status" : "OK"
+}

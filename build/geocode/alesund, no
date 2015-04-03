@@ -1,0 +1,59 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Alesund",
+               "short_name" : "Alesund",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Ålesund",
+               "short_name" : "Ålesund",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Møre og Romsdal",
+               "short_name" : "Møre og Romsdal",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Norway",
+               "short_name" : "NO",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Alesund, Norway",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 62.4825417,
+                  "lng" : 6.396473599999999
+               },
+               "southwest" : {
+                  "lat" : 62.45360369999999,
+                  "lng" : 6.086422
+               }
+            },
+            "location" : {
+               "lat" : 62.47222840000001,
+               "lng" : 6.149482
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 62.4825417,
+                  "lng" : 6.396473599999999
+               },
+               "southwest" : {
+                  "lat" : 62.45360369999999,
+                  "lng" : 6.086422
+               }
+            }
+         },
+         "place_id" : "ChIJS_tHEEfaFkYR6o_AO-5iJeg",
+         "types" : [ "locality", "political" ]
+      }
+   ],
+   "status" : "OK"
+}
