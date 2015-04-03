@@ -1,19 +1,24 @@
 'use strict';
 
-var _            = require('lodash');
-var EventEmitter = require('events').EventEmitter;
+var _             = require('lodash');
+var EventEmitter  = require('events').EventEmitter;
 
-var Events       = require('constants/Events');
+var AppDispatcher = require('dispatcher/AppDispatcher');
+var Events        = require('constants/Events');
 
 var CHANGE_EVENT = 'change';
 
-module.exports = _.assign({}, EventEmitter.prototype, {
+var _forecasts = [];
+
+var ForecastStore = _.assign({}, EventEmitter.prototype, {
   getDailyTemperatures : function() {
 
   },
 
   getCurrentWeather : function () {
-
+    return _.map(_forecasts, function (f) {
+      return _.assign({ name : f.location }, f.forecast.currently);
+    })
   },
 
   getDailyWeatherIcons : function () {
@@ -36,3 +41,20 @@ module.exports = _.assign({}, EventEmitter.prototype, {
     this.removeListener(CHANGE_EVENT, cb);
   }
 });
+
+var _handlers = {};
+
+_handlers[Events.ADD_FORECAST] = function (action) {
+  _forecasts.push({
+      location : action.name,
+      forecast : action.forecast
+    });
+
+  ForecastStore.emitChange();
+};
+
+AppDispatcher.register(function (action) {
+  _handlers[action.actionType](action);
+});
+
+module.exports = ForecastStore;

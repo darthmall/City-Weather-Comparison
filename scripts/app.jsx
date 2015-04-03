@@ -10,7 +10,7 @@ var ForecastStore   = require('stores/ForecastStore');
 var CityWeatherApp = React.createClass({
   getInitialState : function () {
     return {
-      locations : []
+      forecasts : []
     };
   },
 
@@ -24,13 +24,13 @@ var CityWeatherApp = React.createClass({
   render : function () {
     return (
       <div id="location-list">
-        <LocationList locations={this.state.locations} />
+        <LocationList locations={this.state.forecasts} />
       </div>
     );
   },
 
   _onForecastChange : function () {
-
+    this.setState({ forecasts : ForecastStore.getCurrentWeather() });
   },
 });
 

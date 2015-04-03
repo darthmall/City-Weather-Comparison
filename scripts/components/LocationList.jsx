@@ -8,7 +8,7 @@ module.exports = React.createClass({
   render : function () {
     var locations = this.props.locations.map(function (l) {
       return (
-        <Location data={l} />
+        <Location name={l.name} temperature={l.temperature} />
       );
     });
 
