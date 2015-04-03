@@ -2,4 +2,4 @@
 
 var flux = require('flux');
 
-module.exports = flux.Dispatcher();
+module.exports = new flux.Dispatcher();

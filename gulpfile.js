@@ -18,6 +18,7 @@ var path = {
   'main'       : 'app.jsx',
   'scripts'    : 'scripts/**/*.{jsx,js}',
   'styles'     : 'styles/**/*.{less,css}',
+  'clean'      : ['build/index.html', 'build/css', 'build/js']
 };
 
 function say(msg) {
@@ -84,7 +85,7 @@ gulp.task('html', function () {
 gulp.task('build', ['build-lib', 'build-app', 'styles', 'html']);
 
 gulp.task('clean', function () {
-  del([path.build], cb);
+  del([path.clean], cb);
 });
 
 gulp.task('serve', function () {
