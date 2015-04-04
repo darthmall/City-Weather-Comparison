@@ -35,8 +35,6 @@ var WeatherChart = React.createClass({
       .sortBy()
       .value();
 
-    console.debug('domain', domain);
-
     var range = [0, _(forecast)
       .pluck('data')
       .flatten()
@@ -77,10 +75,6 @@ var WeatherChart = React.createClass({
             return result;
           }, [])
       };
-    });
-
-    _.forEach(forecast, function (f) {
-      console.debug(f.name, _.countBy(f.data, 'icon'));
     });
 
     var svg = d3.select(React.findDOMNode(this.refs.svg));
