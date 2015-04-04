@@ -1,13 +1,18 @@
 'use strict';
 
-var _     = require('lodash');
-var d3    = require('d3');
-var React = require('react');
+var _      = require('lodash');
+var d3     = require('d3');
+var moment = require('moment');
+var React  = require('react');
 
-var area  = require('renderers/area');
-var line  = require('renderers/line');
+var area   = require('renderers/area');
+var line   = require('renderers/line');
 
 var ForecastChartMixin = require('mixins/ForecastChartMixin');
+
+function formatTime(t) {
+  return moment.unix(t).format('ddd DD MMM');
+}
 
 /**
  * Renders the forecasted temperature range for one or more locations.
@@ -35,9 +40,19 @@ var TemperatureChart = React.createClass({
       .flatten()
       .value();
 
-    var x = d3.scale.linear()
-      .domain(d3.extent(data, function (d) { return d.time; }))
-      .range([0, this.props.width - this.props.margin.left - this.props.margin.right]);
+    var days = _(data)
+      .pluck('time')
+      .sortBy()
+      .map(formatTime)
+      .uniq()
+      .value();
+
+    var x = d3.scale.ordinal()
+      .domain(days)
+      .rangeRoundBands([
+        0,
+        this.props.width - this.props.margin.left - this.props.margin.right
+      ]);
 
     // The domain of the y-scale should be at least 0, but if there are negative
     // temperatures, we will use those.
@@ -55,7 +70,7 @@ var TemperatureChart = React.createClass({
         opacity : 0.2,
         values  : _.map(f.data, function (d) {
           return {
-            x  : x(d.time),
+            x  : x(formatTime(d.time)),
             y  : y(d.temperatureMax) - y(d.temperatureMin),
             y0 : y(d.temperatureMin)
           };
@@ -73,7 +88,7 @@ var TemperatureChart = React.createClass({
         color  : f.color,
         values : _.map(f.data, function (d) {
           return {
-            x : x(d.time),
+            x : x(formatTime(d.time)),
             y : y(d.temperatureMax)
           };
         })
@@ -90,7 +105,7 @@ var TemperatureChart = React.createClass({
         color  : f.color,
         values : _.map(f.data, function (d) {
           return {
-            x : x(d.time),
+            x : x(formatTime(d.time)),
             y : y(d.temperatureMin)
           };
         })
@@ -100,6 +115,22 @@ var TemperatureChart = React.createClass({
     g.selectAll('.low')
       .data(lows, function (d) { return d.name })
       .call(line().className('low').interpolate('monotone'));
+
+    svg.select('.x.axis')
+      .call(d3.svg.axis()
+        .scale(x)
+        .tickSize(0)
+        .outerTickSize(0));
+
+    svg.select('.y.axis')
+      .call(d3.svg.axis()
+        .scale(y)
+        .orient('left')
+        .ticks(5)
+        .tickSize(4)
+        .tickFormat(function (d) {
+          return d + 'º';
+        }));
   }
 });
 

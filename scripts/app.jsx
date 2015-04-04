@@ -38,7 +38,13 @@ var CityWeatherApp = React.createClass({
               <TemperatureChart
                 forecast={this.state.forecast}
                 width={500}
-                height={200} />
+                height={200}
+                margin={{
+                  top    : 9,
+                  right  : 9,
+                  bottom : 14,
+                  left   :28
+                }} />
             </div>
           </div>
 
