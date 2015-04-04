@@ -25,12 +25,25 @@ var CityWeatherApp = React.createClass({
 
   render : function () {
     return (
-      <div>
+      <div className="row">
         <div id="location-list">
           <LocationList locations={this.state.current} />
         </div>
-        <div id="temperature">
-          <TemperatureChart forecast={this.state.forecast} width={500} height={200} />
+
+        <div id="forecast">
+
+          <div className="row">
+            <div id="weather"></div>
+            <div id="temperature">
+              <TemperatureChart
+                forecast={this.state.forecast}
+                width={500}
+                height={200} />
+            </div>
+          </div>
+
+          <div className="row"></div>
+
         </div>
       </div>
     );
