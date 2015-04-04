@@ -65,7 +65,7 @@ var TemperatureChart = React.createClass({
 
     g.selectAll('.range')
       .data(rangeData, function (d) { return d.name; })
-      .call(area().className('range').interpolate('basis'));
+      .call(area().className('range').interpolate('monotone'));
 
     var highs = _.map(forecast, function (f) {
       return {
@@ -82,7 +82,7 @@ var TemperatureChart = React.createClass({
 
     g.selectAll('.high')
       .data(highs, function (d) { return d.name; })
-      .call(line().className('high').interpolate('basis'));
+      .call(line().className('high').interpolate('monotone'));
 
     var lows = _.map(forecast, function (f) {
       return {
@@ -99,7 +99,7 @@ var TemperatureChart = React.createClass({
 
     g.selectAll('.low')
       .data(lows, function (d) { return d.name })
-      .call(line().className('low').interpolate('basis'));
+      .call(line().className('low').interpolate('monotone'));
   }
 });
 
