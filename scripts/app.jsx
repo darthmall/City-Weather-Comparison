@@ -29,7 +29,7 @@ var CityWeatherApp = React.createClass({
     return (
       <div className="row">
         <div id="location-list">
-          <h2>Locations</h2>
+          <h2>Current</h2>
           <LocationList locations={this.state.current} />
         </div>
 
@@ -65,17 +65,19 @@ var CityWeatherApp = React.createClass({
           </div>
 
           <div className="row">
-            <h3>Precipitation</h3>
-            <PrecipitationChart
-              forecast={this.state.forecast}
-              width={500}
-              height={200}
-              margin={{
-                top    : 9,
-                right  : 9,
-                bottom : 14,
-                left   :28
-              }} />
+            <div>
+              <h3>Precipitation (in. / hr.)</h3>
+              <PrecipitationChart
+                forecast={this.state.forecast}
+                width={500}
+                height={200}
+                margin={{
+                  top    : 9,
+                  right  : 9,
+                  bottom : 14,
+                  left   :28
+                }} />
+            </div>
           </div>
 
         </div>

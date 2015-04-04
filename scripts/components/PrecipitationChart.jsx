@@ -95,7 +95,7 @@ var PrecipitationChart = React.createClass({
       .call(d3.svg.axis()
         .scale(y)
         .orient('left')
-        .tickFormat(d3.format('s'))
+        .tickFormat(d3.format('.1f'))
         .tickSize(-width)
         .ticks(5));
   }
