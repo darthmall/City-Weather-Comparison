@@ -30,7 +30,7 @@ var CityWeatherApp = React.createClass({
           <LocationList locations={this.state.current} />
         </div>
         <div id="temperature">
-          <TemperatureChart forecast={this.state.forecast} width={700} height={100} />
+          <TemperatureChart forecast={this.state.forecast} width={500} height={200} />
         </div>
       </div>
     );
