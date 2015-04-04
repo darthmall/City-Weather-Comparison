@@ -48,7 +48,8 @@ module.exports = {
     return {
       viewBox : '0 0 ' + this.props.width + ' ' + this.props.height,
       margin  : 'translate(' + this.props.margin.left + ',' + this.props.margin.top + ')',
-      xaxis   : 'translate(0,' + height + ')'
+      xaxis   : 'translate(0,' + height + ')',
+      yaxis   : ''
     };
   },
 
@@ -71,7 +72,8 @@ module.exports = {
     this.setState({
       viewBox : '0 0 ' + nextProps.width + ' ' + nextProps.height,
       margin  : 'translate(' + nextProps.margin.left + ',' + nextProps.margin.top + ')',
-      xaxis   : 'translate(0,' + height + ')'
+      xaxis   : 'translate(0,' + height + ')',
+      yaxis   : ''
     });
   },
 
@@ -80,7 +82,7 @@ module.exports = {
       <svg ref="svg" viewBox={this.state.viewBox}>
         <g transform={this.state.margin}>
           <g className="x axis" transform={this.state.xaxis}></g>
-          <g className="y axis"></g>
+          <g className="y axis" transform={this.state.yaxis}></g>
           <g className="content"></g>
           <g className="annotation"></g>
         </g>

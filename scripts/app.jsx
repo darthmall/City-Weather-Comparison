@@ -1,13 +1,14 @@
 'use strict';
 
-var React            = require('react');
+var React              = require('react');
 
-var LocationList     = require('components/LocationList.jsx');
-var TemperatureChart = require('components/TemperatureChart.jsx');
-var WeatherChart     = require('components/WeatherChart.jsx');
+var LocationList       = require('components/LocationList.jsx');
+var TemperatureChart   = require('components/TemperatureChart.jsx');
+var WeatherChart       = require('components/WeatherChart.jsx');
+var PrecipitationChart = require('components/PrecipitationChart.jsx');
 
-var ForecastActions  = require('actions/ForecastActions');
-var ForecastStore    = require('stores/ForecastStore');
+var ForecastActions    = require('actions/ForecastActions');
+var ForecastStore      = require('stores/ForecastStore');
 
 var CityWeatherApp = React.createClass({
   getInitialState : function () {
@@ -28,13 +29,15 @@ var CityWeatherApp = React.createClass({
     return (
       <div className="row">
         <div id="location-list">
+          <h2>Locations</h2>
           <LocationList locations={this.state.current} />
         </div>
 
         <div id="forecast">
-
+          <h2>Forecast</h2>
           <div className="row">
             <div id="weather">
+              <h3>Weather for the week</h3>
               <WeatherChart
                 forecast={this.state.forecast}
                 width={200}
@@ -47,6 +50,7 @@ var CityWeatherApp = React.createClass({
                 }} />
             </div>
             <div id="temperature">
+              <h3>Temperature</h3>
               <TemperatureChart
                 forecast={this.state.forecast}
                 width={500}
@@ -60,7 +64,19 @@ var CityWeatherApp = React.createClass({
             </div>
           </div>
 
-          <div className="row"></div>
+          <div className="row">
+            <h3>Precipitation</h3>
+            <PrecipitationChart
+              forecast={this.state.forecast}
+              width={500}
+              height={200}
+              margin={{
+                top    : 9,
+                right  : 9,
+                bottom : 14,
+                left   :28
+              }} />
+          </div>
 
         </div>
       </div>
