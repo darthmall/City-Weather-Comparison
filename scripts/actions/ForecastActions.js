@@ -17,20 +17,11 @@ exports.getForecast = function (address) {
       // results were found? What if there were 0 results?
       var result = response.results[0];
 
-      var name = _(result.address_components)
-        .map(function (comp) {
-          return comp.short_name;
-        })
-        .thru(function (address) {
-          return address.join(', ');
-        })
-        .value();
-
       api.forecast(result.geometry.location.lat, result.geometry.location.lng)
         .then(function (response) {
           AppDispatcher.dispatch({
             actionType : Events.ADD_FORECAST,
-            name       : name,
+            name       : result.formatted_address,
             forecast   : response
           });
         },
