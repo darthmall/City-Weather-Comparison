@@ -8,7 +8,7 @@ var React  = require('react');
 
 var ForecastChartMixin = require('mixins/ForecastChartMixin');
 
-var dandelion = require('renderers/dandelion');
+var line = require('renderers/line');
 
 function formatTime(t) {
   return moment.unix(t).format('ddd DD MMM');
@@ -59,66 +59,43 @@ var PrecipitationChart = React.createClass({
 
     var x = d3.scale.ordinal()
       .domain(domain)
-      .rangeRoundBands([0, width]);
+      .rangeRoundPoints([0, width]);
 
     var y = d3.scale.linear()
       .domain(range)
-      .range([0, -height]);
-
-    // Scale for mapping the precipitation intensity to the radious of the
-    // circle. According to the Forecast API docs, 0.4 in/hr is heavy rainfall
-    var r = d3.scale.pow()
-      .exponent(2)
-      .domain([0, 0.1])
-      .range([0, Math.min(width, height)]);
+      .range([height, 0]);
 
     var data = _.map(forecast, function (f) {
         return {
-          name : f.name,
+          name    : f.name,
+          color   : f.color,
           values : _.map(f.data, function (d) {
             return {
-              color : f.color,
-              x     : x(formatTime(d.time)),
-              y     : y(d.precipProbability),
-              r     : r(d.precipIntensity)
+              x  : x(formatTime(d.time)),
+              y  : y(d.precipProbability),
             };
           })
         };
       });
 
-    var loc = g.selectAll('.location')
-      .data(data, function (d) { return d.name; });
-
-    loc.enter().append('g').attr('class', 'location');
-
-    var step = x.rangeBand() / data.length;
-    var shift = (x.rangeBand() - (step * (data.length - 1))) / 2
-
-    loc.attr('transform', function (d, i) {
-      return 'translate(' + ((i + 1) * step - shift) + ',' + height + ')';
-    });
-
-    loc.each(function (d) {
-      d3.select(this)
-        .selectAll('.precip')
-        .data(d.values)
-        .call(dandelion().className('precip dandelion'))
-    });
-
-    loc.exit().remove();
+    g.selectAll('.precip')
+      .data(data)
+      .call(line()
+        .className('precip')
+        .interpolate('monotone'));
 
     svg.select('.x.axis')
       .call(d3.svg.axis()
         .scale(x)
         .outerTickSize(0)
-        .tickSize(0));
+        .tickSize(0)
+        .tickPadding(6));
 
     svg.select('.y.axis')
-      .attr('transform', 'translate(0,' + height + ')')
       .call(d3.svg.axis()
         .scale(y)
-        .tickFormat(d3.format('%'))
         .orient('left')
+        .tickFormat(d3.format('s'))
         .tickSize(-width)
         .ticks(5));
   }
