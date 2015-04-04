@@ -5,7 +5,9 @@ var React = require('react');
 module.exports = React.createClass({
   render : function () {
     return (
-      <li>{this.props.name}, {this.props.temperature}º</li>
+      <li style={{backgroundColor: this.props.color}}>
+        {this.props.name}, {this.props.temperature}º
+      </li>
     );
   }
 });

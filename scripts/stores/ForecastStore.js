@@ -11,7 +11,7 @@ var CHANGE_EVENT = 'change';
 
 var _forecasts = [];
 
-var _color = d3.scale.category20b();
+var _color = d3.scale.category10();
 
 var ForecastStore = _.assign({}, EventEmitter.prototype, {
   getCurrentWeather : function () {
