@@ -2,10 +2,6 @@
 
 .axis {
   &.x {
-    line {
-      display : none;
-    }
-
     text {
       text-anchor : "middle";
     }
@@ -23,10 +19,8 @@
     stroke : @tick-color;
   }
 
-  .tick {
-    text {
-      font-size : @axis-font-size;
-      fill      : @tick-color;
-    }
+  text {
+    font-size : @axis-font-size;
+    fill      : @tick-color;
   }
 }

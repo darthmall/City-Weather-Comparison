@@ -4,6 +4,7 @@ var React            = require('react');
 
 var LocationList     = require('components/LocationList.jsx');
 var TemperatureChart = require('components/TemperatureChart.jsx');
+var WeatherChart     = require('components/WeatherChart.jsx');
 
 var ForecastActions  = require('actions/ForecastActions');
 var ForecastStore    = require('stores/ForecastStore');
@@ -33,7 +34,18 @@ var CityWeatherApp = React.createClass({
         <div id="forecast">
 
           <div className="row">
-            <div id="weather"></div>
+            <div id="weather">
+              <WeatherChart
+                forecast={this.state.forecast}
+                width={200}
+                height={200}
+                margin={{
+                  top    : 14,
+                  right  : 14,
+                  bottom : 14,
+                  left   : 14
+                }} />
+            </div>
             <div id="temperature">
               <TemperatureChart
                 forecast={this.state.forecast}

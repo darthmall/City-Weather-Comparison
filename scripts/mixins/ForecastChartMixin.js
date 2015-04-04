@@ -40,27 +40,46 @@ module.exports = {
     }
   },
 
-  shouldComponentUpdate : function (nextProps) {
-    return nextProps.width !== this.props.width ||
+  getInitialState : function () {
+    var height = this.props.height -
+      this.props.margin.top -
+      this.props.margin.bottom;
+
+    return {
+      viewBox : '0 0 ' + this.props.width + ' ' + this.props.height,
+      margin  : 'translate(' + this.props.margin.left + ',' + this.props.margin.top + ')',
+      xaxis   : 'translate(0,' + height + ')'
+    };
+  },
+
+  shouldComponentUpdate : function (nextProps, nextState) {
+    return nextState.viewBox !== this.state.viewBox ||
+      nextState.margin !== this.state.margin ||
+      nextState.xaxis !== this.state.xaxis ||
+      nextProps.width !== this.props.width ||
       nextProps.height !== this.props.height ||
       nextProps.margin.left !== this.props.margin.left ||
       nextProps.margin.top !== this.props.margin.top ||
       nextProps.chartType !== this.props.chartType;
   },
 
+  componentWillReceiveProps : function (nextProps) {
+    var height = nextProps.height -
+      nextProps.margin.top -
+      nextProps.margin.bottom;
+
+    this.setState({
+      viewBox : '0 0 ' + nextProps.width + ' ' + nextProps.height,
+      margin  : 'translate(' + nextProps.margin.left + ',' + nextProps.margin.top + ')',
+      xaxis   : 'translate(0,' + height + ')'
+    });
+  },
+
   render : function () {
-    var height = this.props.height -
-      this.props.margin.top -
-      this.props.margin.bottom;
-
-    var viewBox = '0 0 ' + this.props.width + ' ' + this.props.height;
-    var margin  = 'translate(' + this.props.margin.left + ',' + this.props.margin.top + ')';
-    var xaxis   = 'translate(0,' + height + ')';
-
     return (
-      <svg ref="svg" viewBox={viewBox}>
-        <g transform={margin}>
-          <g className="x axis" transform={xaxis}></g>
+      <svg ref="svg" viewBox={this.state.viewBox}>
+        <g transform={this.state.margin}>
+          <g className="x axis" transform={this.state.xaxis}></g>
           <g className="y axis"></g>
           <g className="content"></g>
           <g className="annotation"></g>
