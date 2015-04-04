@@ -1,6 +1,7 @@
 'use strict';
 
 var _             = require('lodash');
+var d3            = require('d3');
 var EventEmitter  = require('events').EventEmitter;
 
 var AppDispatcher = require('dispatcher/AppDispatcher');
@@ -10,16 +11,24 @@ var CHANGE_EVENT = 'change';
 
 var _forecasts = [];
 
+var _color = d3.scale.category20b();
+
 var ForecastStore = _.assign({}, EventEmitter.prototype, {
   getCurrentWeather : function () {
     return _.map(_forecasts, function (f) {
-      return _.assign({ name : f.location }, f.forecast.currently);
+      return _.assign({
+        name  : f.location,
+        color : f.color
+      }, f.forecast.currently);
     })
   },
 
   getDailyForecast : function () {
     return _.map(_forecasts, function (f) {
-      return _.assign({ name : f.location }, f.forecast.daily);
+      return _.assign({
+        name  : f.location,
+        color : f.color
+      }, f.forecast.daily);
     });
   },
 
@@ -41,6 +50,7 @@ var _handlers = {};
 _handlers[Events.ADD_FORECAST] = function (action) {
   _forecasts.push({
       location : action.name,
+      color    : _color(action.name),
       forecast : action.forecast
     });
 

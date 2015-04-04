@@ -51,7 +51,7 @@ var TemperatureChart = React.createClass({
     var rangeData = _.map(forecast, function (f) {
       return {
         name    : f.name,
-        color   : '#ff0000',
+        color   : f.color,
         opacity : 0.2,
         values  : _.map(f.data, function (d) {
           return {
@@ -70,7 +70,7 @@ var TemperatureChart = React.createClass({
     var highs = _.map(forecast, function (f) {
       return {
         name   : f.name,
-        color  : '#ff0000',
+        color  : f.color,
         values : _.map(f.data, function (d) {
           return {
             x : x(d.time),
@@ -87,7 +87,7 @@ var TemperatureChart = React.createClass({
     var lows = _.map(forecast, function (f) {
       return {
         name   : f.name,
-        color  : '#ff0000',
+        color  : f.color,
         values : _.map(f.data, function (d) {
           return {
             x : x(d.time),
