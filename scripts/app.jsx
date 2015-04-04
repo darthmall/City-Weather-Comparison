@@ -1,16 +1,18 @@
 'use strict';
 
-var React           = require('react');
+var React            = require('react');
 
-var LocationList    = require('components/LocationList.jsx');
+var LocationList     = require('components/LocationList.jsx');
+var TemperatureChart = require('components/TemperatureChart.jsx');
 
-var ForecastActions = require('actions/ForecastActions');
-var ForecastStore   = require('stores/ForecastStore');
+var ForecastActions  = require('actions/ForecastActions');
+var ForecastStore    = require('stores/ForecastStore');
 
 var CityWeatherApp = React.createClass({
   getInitialState : function () {
     return {
-      forecasts : []
+      current  : [],
+      forecast : []
     };
   },
 
@@ -23,14 +25,22 @@ var CityWeatherApp = React.createClass({
 
   render : function () {
     return (
-      <div id="location-list">
-        <LocationList locations={this.state.forecasts} />
+      <div>
+        <div id="location-list">
+          <LocationList locations={this.state.current} />
+        </div>
+        <div id="temperature">
+          <TemperatureChart forecast={this.state.forecast} width={700} height={100} />
+        </div>
       </div>
     );
   },
 
   _onForecastChange : function () {
-    this.setState({ forecasts : ForecastStore.getCurrentWeather() });
+    this.setState({
+      current  : ForecastStore.getCurrentWeather(),
+      forecast : ForecastStore.getDailyForecast()
+    });
   },
 });
 

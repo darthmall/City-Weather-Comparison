@@ -11,22 +11,16 @@ var CHANGE_EVENT = 'change';
 var _forecasts = [];
 
 var ForecastStore = _.assign({}, EventEmitter.prototype, {
-  getDailyTemperatures : function() {
-
-  },
-
   getCurrentWeather : function () {
     return _.map(_forecasts, function (f) {
       return _.assign({ name : f.location }, f.forecast.currently);
     })
   },
 
-  getDailyWeatherIcons : function () {
-
-  },
-
-  getDailyPrecipitation : function () {
-
+  getDailyForecast : function () {
+    return _.map(_forecasts, function (f) {
+      return _.assign({ name : f.location }, f.forecast.daily);
+    });
   },
 
   emitChange : function () {
