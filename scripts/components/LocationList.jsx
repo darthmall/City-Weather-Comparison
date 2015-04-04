@@ -8,14 +8,14 @@ module.exports = React.createClass({
   render : function () {
     var locations = this.props.locations.map(function (l) {
       return (
-        <Location name={l.name} temperature={l.temperature} />
+        <Location key={l.name} name={l.name} temperature={l.temperature} />
       );
     });
 
     return (
       <div>
         <input type="text" placeholder="City, Country" />
-        <ul class="locations">
+        <ul className="locations">
           {locations}
         </ul>
       </div>
