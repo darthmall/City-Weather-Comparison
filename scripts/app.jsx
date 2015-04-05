@@ -1,16 +1,19 @@
 'use strict';
 
-var React              = require('react');
+var moment          = require('moment');
 
-var LocationList       = require('components/LocationList.jsx');
-var Forecast           = require('components/Forecast.jsx');
+var React           = require('react');
 
-var ForecastActions    = require('actions/ForecastActions');
-var ForecastStore      = require('stores/ForecastStore');
+var LocationList    = require('components/LocationList.jsx');
+var Forecast        = require('components/Forecast.jsx');
+
+var ForecastActions = require('actions/ForecastActions');
+var ForecastStore   = require('stores/ForecastStore');
 
 var CityWeatherApp = React.createClass({
   getInitialState : function () {
     return {
+      date     : new Date(),
       current  : [],
       forecast : []
     };
@@ -18,22 +21,26 @@ var CityWeatherApp = React.createClass({
 
   componentDidMount : function () {
     ForecastStore.addChangeListener(this._onForecastChange);
-
-    ForecastActions.getForecast('london, uk');
-    ForecastActions.getForecast('new york, usa');
   },
 
   render : function () {
-    return (
-      <div className="row">
-        <div id="location-list">
-          <h2>Current</h2>
-          <LocationList locations={this.state.current} />
-        </div>
+    var date = moment(date).format('dddd, MMMM Do, YYYY');
 
-        <div id="forecast">
-          <h2>Forecast</h2>
-          <Forecast forecast={this.state.forecast} />
+    return (
+      <div>
+        <header className="row">
+          <h1>{date}</h1>
+        </header>
+        <div className="row">
+          <div id="location-list">
+            <h2>Current</h2>
+            <LocationList locations={this.state.current} />
+          </div>
+
+          <div id="forecast">
+            <h2>Forecast</h2>
+            <Forecast forecast={this.state.forecast} />
+          </div>
         </div>
       </div>
     );

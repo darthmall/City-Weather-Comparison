@@ -13,6 +13,21 @@ var _forecasts = [];
 
 var _color = d3.scale.category10();
 
+function setForecast(location, forecast) {
+  _forecasts.push({
+    location : location,
+    color    : _color(location),
+    forecast : forecast
+  });
+
+  ForecastStore.emitChange();
+}
+
+var forecastHandler = _.curry(setForecast);
+
+window.setNYCForecast    = forecastHandler('New York, NY, USA');
+window.setLondonForecast = forecastHandler('London, UK');
+
 var ForecastStore = _.assign({}, EventEmitter.prototype, {
   getCurrentWeather : function () {
     return _.map(_forecasts, function (f) {
