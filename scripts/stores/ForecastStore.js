@@ -27,6 +27,7 @@ var forecastHandler = _.curry(setForecast);
 
 window.setNYCForecast    = forecastHandler('New York, NY, USA');
 window.setLondonForecast = forecastHandler('London, UK');
+window.setTaipeiForecast = forecastHandler('Taipei, Taiwan');
 
 var ForecastStore = _.assign({}, EventEmitter.prototype, {
   getCurrentWeather : function () {
