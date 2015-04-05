@@ -14,7 +14,6 @@ module.exports = React.createClass({
 
     return (
       <div>
-        <input type="text" placeholder="City, Country" />
         <ul className="locations">
           {locations}
         </ul>
