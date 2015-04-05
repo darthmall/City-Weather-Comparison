@@ -2,8 +2,10 @@
 
 @import "_settings";
 @import "_helpers";
-@import "_locationList";
+@import "_typography";
+@import "_ui";
 @import "_charts";
+@import "_locationList";
 
 /*
  * What follows is the result of much research on cross-browser styling.
@@ -96,6 +98,10 @@ textarea {
     padding: 0.2em 0;
 }
 
+body {
+  padding : @gutter;
+}
+
 svg {
     display : block;
     width   : 100%;
@@ -104,6 +110,7 @@ svg {
 @media screen and (min-width: 992px) {
     .row {
         display : flex;
+        margin : 0 -@gutter;
 
         & > * {
             padding : 0 @gutter;
