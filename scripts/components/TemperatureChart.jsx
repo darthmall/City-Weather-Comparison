@@ -49,7 +49,7 @@ var TemperatureChart = React.createClass({
 
     var x = d3.scale.ordinal()
       .domain(days)
-      .rangeRoundBands([
+      .rangeRoundPoints([
         0,
         this.props.width - this.props.margin.left - this.props.margin.right
       ]);
@@ -142,7 +142,8 @@ var TemperatureChart = React.createClass({
       .call(d3.svg.axis()
         .scale(x)
         .tickSize(0)
-        .outerTickSize(0));
+        .outerTickSize(0)
+        .tickPadding(6));
 
     svg.select('.y.axis')
       .call(d3.svg.axis()
