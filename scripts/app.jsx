@@ -3,9 +3,7 @@
 var React              = require('react');
 
 var LocationList       = require('components/LocationList.jsx');
-var TemperatureChart   = require('components/TemperatureChart.jsx');
-var WeatherChart       = require('components/WeatherChart.jsx');
-var PrecipitationChart = require('components/PrecipitationChart.jsx');
+var Forecast           = require('components/Forecast.jsx');
 
 var ForecastActions    = require('actions/ForecastActions');
 var ForecastStore      = require('stores/ForecastStore');
@@ -35,51 +33,7 @@ var CityWeatherApp = React.createClass({
 
         <div id="forecast">
           <h2>Forecast</h2>
-          <div className="row">
-            <div id="weather">
-              <h3>Weather for the week</h3>
-              <WeatherChart
-                forecast={this.state.forecast}
-                width={200}
-                height={200}
-                margin={{
-                  top    : 14,
-                  right  : 14,
-                  bottom : 14,
-                  left   : 14
-                }} />
-            </div>
-            <div id="temperature">
-              <h3>Temperature</h3>
-              <TemperatureChart
-                forecast={this.state.forecast}
-                width={500}
-                height={200}
-                margin={{
-                  top    : 9,
-                  right  : 9,
-                  bottom : 14,
-                  left   :28
-                }} />
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="precipitation">
-              <h3>Precipitation (in. / hr.)</h3>
-              <PrecipitationChart
-                forecast={this.state.forecast}
-                width={500}
-                height={200}
-                margin={{
-                  top    : 9,
-                  right  : 9,
-                  bottom : 14,
-                  left   :28
-                }} />
-            </div>
-          </div>
-
+          <Forecast forecast={this.state.forecast} />
         </div>
       </div>
     );
