@@ -35,3 +35,35 @@
 line {
   stroke-width : 2px;
 }
+
+.precipitation {
+  circle {
+    fill         : inherit;
+    stroke       : white;
+    stroke-width : 1px;
+  }
+
+  path {
+    fill   : none;
+    stroke : inherit;
+  }
+}
+
+#temperature {
+  .range {
+    path {
+      fill         : inherit;
+      fill-opacity : 0.2;
+      stroke       : none !important;
+    }
+  }
+
+  .high,
+  .low {
+    path {
+      fill         : none;
+      stroke       : inherit;
+      stroke-width : 1px;
+    }
+  }
+}

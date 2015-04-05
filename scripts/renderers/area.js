@@ -8,7 +8,7 @@ module.exports = function () {
     .y(function (d) { return d.y0 + d.y; })
     .y0(function (d) { return d.y0; });
 
-  var _className   = null;
+  var _className = 'area';
 
   function fill(d) {
     return d.color;
@@ -19,37 +19,23 @@ module.exports = function () {
   }
 
   function chart(selection) {
+    selection.each(function (d) {
+      var g = d3.select(this);
 
+      var area = g.selectAll('.' + _className)
+        .data([d.values]);
 
-    // Animate existing paths to their new location and fill color
-    selection
-      .transition()
-      .duration(300)
-      .attr('d', function (d) { return _area(d.values); })
-      .style('fill', fill);
+      area.enter()
+        .append('path')
+        .attr('class', _className);
 
-    // Create new paths fully transparent
-    selection.enter()
-      .append('path')
-      .attr('d', function (d) { return _area(d.values); })
-      .style({
-        'fill'    : fill,
-        'opacity' : 0
-      });
+      area.attr('d', _area)
+        .style('fill', fill);
 
-    // Animate transparency, fading in new paths and updating existing
-    selection
-      .attr('class', _className)
-      .transition()
-      .duration(300)
-      .style('opacity', opacity);
+      // Fade out old paths
+      selection.exit().remove();
+    });
 
-    // Fade out old paths
-    selection.exit()
-      .transition()
-      .duration(300)
-      .style('opacity', 0)
-      .remove();
   }
 
   chart.className = function (value) {

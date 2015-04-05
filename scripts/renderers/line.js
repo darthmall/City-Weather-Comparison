@@ -5,39 +5,30 @@ module.exports = function () {
     .x(function (d) { return d.x; })
     .y(function (d) { return d.y; });
 
-  var _className   = null;
+  var _className = 'line';
 
   function stroke(d) {
     return d.color;
   }
 
   function chart(selection) {
-    selection
-      .transition()
-      .duration(300)
-      .attr('d', function (d) { return _line(d.values); })
-      .style('stroke', stroke);
+    selection.each(function (d) {
+      var g = d3.select(this);
 
-    selection.enter()
-      .append('path')
-      .attr('d', function (d) { return _line(d.values); })
-      .style({
-        'stroke'  : stroke,
-        'opacity' : 0,
-        'fill'    : 'none'
-      });
+      var line = g.selectAll('.' + _className)
+        .data([d.values]);
 
-    selection
-      .attr('class', _className)
-      .transition()
-      .duration(300)
-      .style('opacity', 1);
+      line.enter()
+        .append('path')
+        .attr('class', _className);
 
-    selection.exit()
-      .transition()
-      .duration(300)
-      .style('opacity', 0)
-      .remove();
+      line.transition()
+        .duration(300)
+        .attr('d', _line)
+        .style('stroke', stroke);
+
+      line.exit().remove();
+    });
   }
 
   chart.className = function (value) {

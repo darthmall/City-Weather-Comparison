@@ -8,6 +8,7 @@ var React  = require('react');
 
 var ForecastChartMixin = require('mixins/ForecastChartMixin');
 
+var dot  = require('renderers/dot');
 var line = require('renderers/line');
 
 function formatTime(t) {
@@ -78,11 +79,18 @@ var PrecipitationChart = React.createClass({
         };
       });
 
-    g.selectAll('.precip')
-      .data(data)
-      .call(line()
-        .className('precip')
-        .interpolate('monotone'));
+    var series = g.selectAll('.precip')
+      .data(data);
+
+    series.enter().append('g').attr('class', 'precip');
+
+    series
+      .attr({
+        'fill'   : function (d) { return d.color; },
+        'stroke' : function (d) { return d.color; }
+      })
+      .call(line().interpolate('monotone'))
+      .call(dot().radius(3));
 
     svg.select('.x.axis')
       .call(d3.svg.axis()

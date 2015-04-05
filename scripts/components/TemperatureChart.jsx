@@ -67,7 +67,6 @@ var TemperatureChart = React.createClass({
       return {
         name    : f.name,
         color   : f.color,
-        opacity : 0.2,
         values  : _.map(f.data, function (d) {
           return {
             x  : x(formatTime(d.time)),
@@ -78,9 +77,16 @@ var TemperatureChart = React.createClass({
       };
     });
 
-    g.selectAll('.range')
+    var range = g.selectAll('.range')
       .data(rangeData, function (d) { return d.name; })
-      .call(area().className('range').interpolate('monotone'));
+
+    range.enter().append('g').attr('class', 'range');
+    range
+      .style({
+        'fill'   : function (d) { return d.color; },
+      })
+      .call(area().interpolate('monotone'));
+    range.exit().remove();
 
     var highs = _.map(forecast, function (f) {
       return {
@@ -95,9 +101,17 @@ var TemperatureChart = React.createClass({
       };
     });
 
-    g.selectAll('.high')
-      .data(highs, function (d) { return d.name; })
-      .call(line().className('high').interpolate('monotone'));
+    var high = g.selectAll('.high')
+      .data(highs, function (d) { return d.name; });
+
+    high.enter().append('g').attr('class', 'high');
+    high
+      .style({
+        'fill'   : function (d) { return d.color; },
+        'stroke' : function (d) { return d.color; }
+      })
+      .call(line().interpolate('monotone'));
+    high.exit().remove();
 
     var lows = _.map(forecast, function (f) {
       return {
@@ -112,9 +126,17 @@ var TemperatureChart = React.createClass({
       };
     });
 
-    g.selectAll('.low')
-      .data(lows, function (d) { return d.name })
-      .call(line().className('low').interpolate('monotone'));
+    var low = g.selectAll('.low')
+      .data(lows, function (d) { return d.name });
+
+    low.enter().append('g').attr('class', 'low');
+    low
+      .style({
+        'fill'   : function (d) { return d.color; },
+        'stroke' : function (d) { return d.color; }
+      })
+      .call(line().interpolate('monotone'));
+    low.exit().remove()
 
     svg.select('.x.axis')
       .call(d3.svg.axis()

@@ -65,7 +65,7 @@ var CityWeatherApp = React.createClass({
           </div>
 
           <div className="row">
-            <div>
+            <div className="precipitation">
               <h3>Precipitation (in. / hr.)</h3>
               <PrecipitationChart
                 forecast={this.state.forecast}
