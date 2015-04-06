@@ -74,6 +74,10 @@ _handlers[Events.ADD_FORECAST] = function (action) {
 };
 
 AppDispatcher.register(function (action) {
+  if (!(action.actionType in _handlers)) {
+    return;
+  }
+
   _handlers[action.actionType](action);
 });
 
