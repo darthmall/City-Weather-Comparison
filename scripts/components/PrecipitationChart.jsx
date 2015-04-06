@@ -44,7 +44,7 @@ var PrecipitationChart = React.createClass({
     var range = [0, _(forecast)
       .pluck('data')
       .flatten()
-      .pluck('precipProbability')
+      .pluck('precipIntensity')
       .max()];
 
     var svg = d3.select(React.findDOMNode(this.refs.svg));
@@ -73,7 +73,7 @@ var PrecipitationChart = React.createClass({
           values : _.map(f.data, function (d) {
             return {
               x    : x(formatTime(d.time)),
-              y    : y(d.precipProbability),
+              y    : y(d.precipIntensity),
               data : d
             };
           })
@@ -122,7 +122,7 @@ var PrecipitationChart = React.createClass({
       .call(d3.svg.axis()
         .scale(y)
         .orient('left')
-        .tickFormat(d3.format('.1f'))
+        .tickFormat(d3.format('.3f'))
         .tickSize(-width)
         .ticks(5));
   }
