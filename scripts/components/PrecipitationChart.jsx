@@ -68,12 +68,13 @@ var PrecipitationChart = React.createClass({
 
     var data = _.map(forecast, function (f) {
         return {
-          name    : f.name,
-          color   : f.color,
+          name   : f.name,
+          color  : f.color,
           values : _.map(f.data, function (d) {
             return {
-              x  : x(formatTime(d.time)),
-              y  : y(d.precipProbability),
+              x    : x(formatTime(d.time)),
+              y    : y(d.precipProbability),
+              data : d
             };
           })
         };
@@ -91,6 +92,24 @@ var PrecipitationChart = React.createClass({
       })
       .call(line().interpolate('monotone'))
       .call(dot().radius(3));
+
+    var self = this;
+
+    series.selectAll('circle')
+      .on('mouseover', function (d) {
+        d3.select(this)
+          .transition()
+          .duration(500)
+          .ease('elastic')
+          .attr('r', 5);
+      })
+      .on('mouseout', function (d) {
+        d3.select(this)
+          .transition()
+          .duration(500)
+          .ease('elastic')
+          .attr('r', 3);
+      })
 
     svg.select('.x.axis')
       .call(d3.svg.axis()
